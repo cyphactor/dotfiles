@@ -1,0 +1,73 @@
+#!/bin/sh
+
+echo "Installing dotfiles..."
+echo
+
+# Install neovim dotfiles
+if [ ! -d "${HOME}/.nvim" ]; then
+  echo "Cloning dotnvim repo to ~/.nvim"
+  git clone git@github.com:cyphactor/dotnvim.git ~/.nvim
+  cd ~/.nvim
+  git submodule update --init
+  echo
+else
+  echo "neovim dotfiles already installed"
+fi
+
+ln -sf ~/.nvim/nvmirc ~/.nvimrc 
+
+# Install vim dotfiles
+if [ ! -d "${HOME}/.vim" ]; then
+  echo "Cloning dotvim repo to ~/.vim"
+  git clone git@github.com:cyphactor/dotvim.git ~/.vim
+  cd ~/.vim
+  git submodule update --init
+  echo
+else
+  echo "vim dotfiles already installed"
+fi
+
+# Install zsh dotfiles
+if [ ! -d "${HOME}/.zsh" ]; then
+  echo "Cloning dotzsh repo to ~/.zsh"
+  git clone git@github.com:cyphactor/dotzsh.git ~/.zsh
+  echo
+else
+  echo "zsh dotfiles already installed"
+fi
+
+ln -sf ~/.zsh/zshrc ~/.zshrc
+ln -sf ~/.zsh/zshenv ~/.zshenv
+
+# Install tmux dotfiles
+if [ ! -d "${HOME}/.tmux" ]; then
+  echo "Cloning dotzsh repo to ~/.tmux"
+  git clone git@github.com:cyphactor/dotmux.git ~/.tmux
+  echo
+else
+  echo "tmux dotfiles already installed"
+fi
+
+ln -sf ~/.tmux/tmux.conf ~/.tmux.conf
+
+# Install ack dotfiles
+if [ ! -d "${HOME}/.ack" ]; then
+  echo "Cloning dotack repo to ~/.ack"
+  git clone git@github.com:cyphactor/dotack.git ~/.ack
+  echo
+else
+  echo "ack dotfiles already installed"
+fi
+
+ln -sf ~/.ack/ackrc ~/.ackrc
+
+# Install git dotfiles
+if [ ! -d "${HOME}/.git" ]; then
+  echo "Cloning dotgit repo to ~/.git"
+  git clone git@github.com:cyphactor/dotgit.git ~/.git
+  echo
+else
+  echo "git dotfiles already installed"
+fi
+
+ln -sf ~/.git/gitconfig ~/.gitconfig
